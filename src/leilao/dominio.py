@@ -27,6 +27,13 @@ class Leilao:
     def lances(self):
         return self.__lances
 
+    def propoe(self, lance: Lance):
+        self.__lances.append(lance)
+
+    @property
+    def lances(self):
+        return self.__lances[:]
+
 class Avaliador:
 
     def __init__(self):
@@ -40,3 +47,5 @@ class Avaliador:
 
             if lance.valor < self.menor_lance:
                 self.menor_lance = lance.valor
+
+

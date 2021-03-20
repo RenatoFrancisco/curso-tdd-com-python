@@ -12,8 +12,8 @@ class TestAvaliador(TestCase):
         yuri = Usuario('yuri')
         lance_do_yuri = Lance(yuri, 100.0)
 
-        self.leilao.lances.append(lance_do_yuri)
-        self.leilao.lances.append(self.lance_do_gui)
+        self.leilao.propoe(lance_do_yuri)
+        self.leilao.propoe(self.lance_do_gui)
 
         avaliador = Avaliador()
         avaliador.avalia(self.leilao)
@@ -28,8 +28,8 @@ class TestAvaliador(TestCase):
         yuri = Usuario('yuri')
         lance_do_yuri = Lance(yuri, 100.0)
 
-        self.leilao.lances.append(self.lance_do_gui)
-        self.leilao.lances.append(lance_do_yuri)
+        self.leilao.propoe(self.lance_do_gui)
+        self.leilao.propoe(lance_do_yuri)
 
         avaliador = Avaliador()
         avaliador.avalia(self.leilao)
@@ -55,9 +55,9 @@ class TestAvaliador(TestCase):
         vini = Usuario('vini')
         lance_do_vini = Lance(vini, 200.0)
 
-        self.leilao.lances.append(lance_do_yuri)
-        self.leilao.lances.append(self.lance_do_gui)
-        self.leilao.lances.append(lance_do_vini)
+        self.leilao.propoe(lance_do_yuri)
+        self.leilao.propoe(self.lance_do_gui)
+        self.leilao.propoe(lance_do_vini)
 
         avaliador = Avaliador()
         avaliador.avalia(self.leilao)
