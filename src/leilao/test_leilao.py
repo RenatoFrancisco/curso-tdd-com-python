@@ -21,18 +21,14 @@ class TestLeilao(TestCase):
         self.assertEqual(menor_valor_esperado, self.leilao.menor_lance)
         self.assertEqual(maior_valor_esperado, self.leilao.maior_lance)
 
-    def test_deve_retornar_o_maior_e_o_menor_valor_de_um_lance_quando_adicionados_em_ordem_decrescente(self):
-        yuri = Usuario('yuri')
-        lance_do_yuri = Lance(yuri, 100.0)
+    def test_nao_deve_permitir_propor_lance_em_ordem_decrescente(self):
 
-        self.leilao.propoe(self.lance_do_gui)
-        self.leilao.propoe(lance_do_yuri)
+        with self.assertRaises(ValueError):
+            yuri = Usuario('yuri')
+            lance_do_yuri = Lance(yuri, 100.0)
 
-        menor_valor_esperado = 100.0
-        maior_valor_esperado = 150.0
-
-        self.assertEqual(menor_valor_esperado, self.leilao.menor_lance)
-        self.assertEqual(maior_valor_esperado, self.leilao.maior_lance)
+            self.leilao.propoe(self.lance_do_gui)
+            self.leilao.propoe(lance_do_yuri)
 
     def test_deve_retornar_o_mesmo_valor_para_o_menor_e_maior_lance_quando_leilao_estiver_um_lance(self):
         self.leilao.propoe(self.lance_do_gui)
